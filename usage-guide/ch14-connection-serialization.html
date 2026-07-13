@@ -15,8 +15,8 @@
         <link rel="icon" href="favicon-de23e50b.svg">
         <link rel="shortcut icon" href="favicon-8114d1fc.png">
         <link rel="stylesheet" href="css/variables-8adf115d.css">
-        <link rel="stylesheet" href="css/general-2459343d.css">
-        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/general-e96d0476.css">
+        <link rel="stylesheet" href="css/chrome-d279d366.css">
         <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
 
         <!-- Fonts -->
@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-ad7fa4ba.js";
+            window.path_to_searchindex_js = "searchindex-66614144.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-6a963795.js"></script>
+        <script src="toc-d147fdf9.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -177,8 +177,8 @@
                         <h1 id="connection-serialization"><a class="header" href="#connection-serialization">Connection Serialization</a></h1>
 <p>Connection Serialization allows TLS connection state to be serialized into a byte string. This allows the connection to be transported to a different host or stored to disk.</p>
 <div class="warning">
-This feature is dangerous. It provides cryptographic material from a TLS session in plaintext. An attacker with access to the serialized connection can decrypt any past and future communications from the connection. Users MUST both encrypt and MAC the contents of the serialized connection to provide secrecy and integrity. 
-<p>The simplest way to provide secrecy and integrity is to transport the serialized connection using a protocol like TLS which protects the secrecy and integrity of all transported data.</p>
+This feature is dangerous. The serialized connection contains cryptographic secrets, sequence numbers, the cipher suite, and the protocol version in plaintext. An attacker with access to this data can decrypt any past and future communications from the connection. Additionally, s2n-tls does not include a MAC or signature over the serialized data, so a modified blob will be deserialized and used as-is.
+<p>Users MUST both encrypt and MAC the serialized connection to provide secrecy and integrity. The simplest way to do this is to transport the serialized connection using a protocol like TLS. If the blob is stored in a database, shared cache, or sent over a network, it must be protected before storage or transmission.</p>
 </div>
 
 <h2 id="use-case"><a class="header" href="#use-case">Use Case</a></h2>
@@ -264,11 +264,11 @@ This feature is dangerous. It provides cryptographic material from a TLS session
 
         <script src="elasticlunr-ef4e11c1.min.js"></script>
         <script src="mark-09e88c2c.min.js"></script>
-        <script src="searcher-c2a407aa.js"></script>
+        <script src="searcher-09f2665d.js"></script>
 
         <script src="clipboard-1626706a.min.js"></script>
         <script src="highlight-abc7f01d.js"></script>
-        <script src="book-a0b12cfe.js"></script>
+        <script src="book-609e4cb8.js"></script>
 
         <!-- Custom JS scripts -->
 
